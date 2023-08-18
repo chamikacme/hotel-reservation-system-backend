@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.webdev.hotelRes.entity.Room;
-import com.webdev.hotelRes.repositor.RoomRepository;
+import com.webdev.hotelRes.repository.RoomRepository;
 
 @Service
 public class RoomServiceImpl implements RoomService{
