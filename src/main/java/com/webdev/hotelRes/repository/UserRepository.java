@@ -10,7 +10,7 @@ import com.webdev.hotelRes.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User , Long>{
     //Custom queries
-    Optional<User> findByUsername(String username);
-    Boolean existsByUsername(String username);
+    Optional<User> findByEmail(String email);
+    Boolean existsByEmail(String email);
 
 }

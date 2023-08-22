@@ -8,7 +8,7 @@ import lombok.Data;
 public class JwtResponseDTO {
     private String token;
     private Long id;
-    private String username;
+    private String email;
 
 }
 
