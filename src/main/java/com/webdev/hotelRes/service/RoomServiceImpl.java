@@ -12,12 +12,8 @@ import com.webdev.hotelRes.repository.RoomRepository;
 @Service
 public class RoomServiceImpl implements RoomService{
 
-    private RoomRepository roomRepository;
-
     @Autowired
-    public RoomServiceImpl(RoomRepository roomRepository) {
-        this.roomRepository = roomRepository;
-    }
+    RoomRepository roomRepository;
 
     @Override
     public List<Room> getAllRooms() {
@@ -41,7 +37,6 @@ public class RoomServiceImpl implements RoomService{
         existingRoom.setType(room.getType());
         existingRoom.setOccupants(room.getOccupants());
         existingRoom.setImage(room.getImage());
-        existingRoom.setQoh(room.getQoh());
         existingRoom.setUnitPrice(room.getUnitPrice());
 
         return roomRepository.save(existingRoom);
@@ -51,5 +46,4 @@ public class RoomServiceImpl implements RoomService{
     public void deleteRoom(Long id) {
         roomRepository.deleteById(id);
     }
-    
 }
