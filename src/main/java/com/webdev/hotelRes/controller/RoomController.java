@@ -23,12 +23,9 @@ import com.webdev.hotelRes.service.RoomService;
 @RestController
 @RequestMapping("/rooms")
 public class RoomController {
-    private RoomService roomService;
-
+    
     @Autowired
-    public RoomController(RoomService roomService) {
-        this.roomService = roomService;
-    }
+    RoomService roomService;
 
     @GetMapping
     public ResponseEntity<List<Room>> getAllRooms() {
@@ -58,7 +55,7 @@ public class RoomController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Room> updatRoom(@PathVariable Long id, @RequestBody Room room) {
+    public ResponseEntity<Room> updateRoom(@PathVariable Long id, @RequestBody Room room) {
 
         try {
             Room updatedRoom = roomService.updateRoom(id, room);
@@ -71,7 +68,7 @@ public class RoomController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteRoom(@PathVariable Long id) {
         try {
             roomService.deleteRoom(id);
             return ResponseEntity.status(HttpStatus.OK).body(null);
