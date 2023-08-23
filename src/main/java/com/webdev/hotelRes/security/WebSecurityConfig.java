@@ -63,6 +63,9 @@ public class WebSecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth ->
                 auth.requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/foods/**").hasAnyRole("CHEF", "RECEPTIONIST", "ADMIN")
+                .requestMatchers("/rooms/**").hasAnyRole("RECEPTIONIST", "ADMIN")
+                .requestMatchers("/user/**").hasAnyRole("USER", "RECEPTIONIST", "ADMIN")
                 .anyRequest().authenticated());
 
         http.authenticationProvider(authenticationProvider());
