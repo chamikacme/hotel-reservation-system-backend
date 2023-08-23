@@ -69,6 +69,10 @@ public class AuthController {
                 newUser.setPhone(user.getPhone());
             }
 
+            if(user.getRole() != null){
+                newUser.setRole(user.getRole());
+            }
+
             userRepository.save(newUser);
 
             return ResponseEntity.ok(new MessageResponseDTO("User registered successfully!"));
