@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.webdev.hotelRes.entity.OrderDetail;
 import com.webdev.hotelRes.repository.OrderDetailRepository;
 
+@Service
 public class OrderDetailServiceImpl implements OrderDetailService {
     private OrderDetailRepository orderDetailRepository;
 

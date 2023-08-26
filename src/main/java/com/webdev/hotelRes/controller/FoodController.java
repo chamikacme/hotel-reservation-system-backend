@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.webdev.hotelRes.entity.Food;
 import com.webdev.hotelRes.service.FoodService;
 
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/foods")
+@RequestMapping
 public class FoodController {
     private FoodService foodService;
 
@@ -28,12 +30,12 @@ public class FoodController {
         this.foodService=foodService;
     }
 
-    @GetMapping
+    @GetMapping("/foods")
     public ResponseEntity<List<Food>>getAllFoods(){
         return ResponseEntity.status(HttpStatus.OK).body(foodService.getAllFoods());
     }
 
-    @GetMapping("/{Id}")
+    @GetMapping("/foods/{Id}")
     public ResponseEntity<Food> getFoodById(@PathVariable Long id){
         try{
 
@@ -51,7 +53,7 @@ public class FoodController {
             
     }
 
-    @PostMapping
+    @PostMapping("/foods")
     public ResponseEntity<Food> saveFood(@RequestBody Food food){
         try{
 
@@ -64,7 +66,7 @@ public class FoodController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/foods/{id}")
     public ResponseEntity<Food> updateFood(@PathVariable Long id,@RequestBody Food food){
             try{
 
@@ -81,7 +83,7 @@ public class FoodController {
             }
         
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/foods/{id}")
     public ResponseEntity<Void> deleteFood(@PathVariable Long id){
         try{
             foodService.deleteFood(id);

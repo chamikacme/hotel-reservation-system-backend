@@ -21,7 +21,7 @@ import com.webdev.hotelRes.service.OrderDetailService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/orderdetails")
+@RequestMapping
 public class OrderDetailController {
     private OrderDetailService orderDetailService;
 
@@ -30,12 +30,12 @@ public class OrderDetailController {
         this.orderDetailService = orderDetailService;
     }
 
-    @GetMapping
+    @GetMapping("/orderdetails")
     public ResponseEntity<List<OrderDetail>> getAllOrderDetails() {
         return ResponseEntity.status(HttpStatus.OK).body(orderDetailService.getAllOrderDetails());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/orderdetails/{id}")
     public ResponseEntity<OrderDetail> getOrderDetailById(@PathVariable Long id) {
         try {
             OrderDetail orderDetail = orderDetailService.getOrderDetailById(id);

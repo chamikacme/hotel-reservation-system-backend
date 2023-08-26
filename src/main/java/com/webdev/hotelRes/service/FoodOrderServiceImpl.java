@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.webdev.hotelRes.entity.FoodOrder;
 import com.webdev.hotelRes.repository.FoodOrderRepository;
 
+@Service
 public class FoodOrderServiceImpl implements FoodOrderService {
     private FoodOrderRepository foodOrderRepository;
 
