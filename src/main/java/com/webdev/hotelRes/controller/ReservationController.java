@@ -84,10 +84,7 @@ public class ReservationController {
         return ResponseEntity.status(HttpStatus.OK).body(reservationService.getReservationByRoomId(roomId));
     }
 
-    @GetMapping
-    public ResponseEntity<Boolean> isDatesAvailable(@PathVariable Long roomId, @RequestBody Reservation reservation) {
-        return null;
-    }
+    
 
 
 }

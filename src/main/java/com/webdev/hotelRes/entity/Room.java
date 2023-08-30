@@ -1,5 +1,9 @@
 package com.webdev.hotelRes.entity;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -15,13 +19,13 @@ public class Room {
     private Long id;
 
     @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
     private String type;
 
     @Column(nullable = false)
     private Integer occupants;
-
-    @Column(nullable = true)
-    private String image;
 
     @Column(nullable = false)
     private Double unitPrice;

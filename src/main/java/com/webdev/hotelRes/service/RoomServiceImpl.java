@@ -34,9 +34,10 @@ public class RoomServiceImpl implements RoomService{
     public Room updateRoom(Long id, Room room) {
         Room existingRoom = getRoomById(id);
 
+        
+        existingRoom.setName(room.getName());
         existingRoom.setType(room.getType());
         existingRoom.setOccupants(room.getOccupants());
-        existingRoom.setImage(room.getImage());
         existingRoom.setUnitPrice(room.getUnitPrice());
 
         return roomRepository.save(existingRoom);
