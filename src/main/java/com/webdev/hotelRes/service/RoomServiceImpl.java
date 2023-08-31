@@ -39,7 +39,7 @@ public class RoomServiceImpl implements RoomService{
         existingRoom.setType(room.getType());
         existingRoom.setOccupants(room.getOccupants());
         existingRoom.setUnitPrice(room.getUnitPrice());
-
+        existingRoom.setFeatures(room.getFeatures());
         return roomRepository.save(existingRoom);
     }
 
