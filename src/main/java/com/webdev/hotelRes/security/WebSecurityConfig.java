@@ -66,6 +66,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/foods/**").hasAnyRole("CHEF", "RECEPTIONIST", "ADMIN")
                 .requestMatchers("/rooms/**").permitAll()
                 .requestMatchers("/images/**").permitAll()
+                .requestMatchers("/reservations/**").permitAll()
                 .requestMatchers("/user/**").hasAnyRole("USER", "RECEPTIONIST", "ADMIN")
                 .anyRequest().authenticated());
 

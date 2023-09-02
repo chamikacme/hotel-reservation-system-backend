@@ -14,4 +14,5 @@ public interface ReservationService {
     Reservation createReservation(Reservation reservation);
     Reservation updateReservation(Long id, Reservation reservation);
     void deleteReservation(Long id);
+    List<Reservation> getReservationByStatus(String status);
 }

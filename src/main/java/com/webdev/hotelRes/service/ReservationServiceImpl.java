@@ -52,5 +52,10 @@ public class ReservationServiceImpl implements ReservationService{
         return reservationRepository.findReservationByRoomId(roomId);
     }
 
+	@Override
+	public List<Reservation> getReservationByStatus(String status) {
+		return reservationRepository.findReservationsByStatus(status);
+	}
+
 	
 }

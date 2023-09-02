@@ -32,18 +32,6 @@ public class ReservationController {
         return ResponseEntity.status(HttpStatus.OK).body(reservationService.getAllReservatios());
     }
 
-    @GetMapping("/reservations/{id}")
-    public ResponseEntity<Reservation> getReservationById(@PathVariable Long id) {
-        try {
-            Reservation reservation = reservationService.getReservationById(id);
-            return ResponseEntity.status(HttpStatus.OK).body(reservation);
-        } catch (NoSuchElementException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
-    }
-
     @PostMapping("/reservations")
     public ResponseEntity<Reservation> saveReservation(@RequestBody Reservation reservation) {
         try {
@@ -67,7 +55,7 @@ public class ReservationController {
         }
     }
 
-    @DeleteMapping("/reservations/{id}")
+    @DeleteMapping("/reservation/{id}")
     public ResponseEntity<Void> deleteReservation(@PathVariable Long id) {
         try {
             reservationService.deleteReservation(id);
@@ -83,6 +71,23 @@ public class ReservationController {
     public ResponseEntity<List<Reservation>> getReservationsByRoomId(@PathVariable Long roomId) {
         return ResponseEntity.status(HttpStatus.OK).body(reservationService.getReservationByRoomId(roomId));
     }
+
+    //Combined APIs for both get reservation by id and status
+    
+    @GetMapping("/reservations/{idOrStatus}")
+public ResponseEntity<?> getReservationOrReservations(@PathVariable String idOrStatus) {
+    try {
+        Long id = Long.parseLong(idOrStatus);
+        // If it is, retrieve a single reservation by ID
+        Reservation reservation = reservationService.getReservationById(id);
+        return ResponseEntity.ok(reservation);
+    } catch (NumberFormatException ex) {
+        // Not a valid Long, treat it as a status and retrieve reservations by status
+        List<Reservation> reservations = reservationService.getReservationByStatus(idOrStatus);
+        return ResponseEntity.ok(reservations);
+    }
+}
+
 
     
 
