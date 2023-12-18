@@ -33,6 +33,7 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserById(@PathVariable Long id){
         try{
+            
             return ResponseEntity.ok(userService.getUserById(id));
         } catch (NoSuchElementException e){
             return ResponseEntity.badRequest().body(new MessageResponseDTO("User not found: " + id));
